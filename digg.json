@@ -3,6 +3,6 @@
   "version": "1.0.353",
   "url": "http://signage.me/components/digg/digg.zip",
   "property": "page.html",
-  "desktopUseNode": true,
+  "desktopUseNode": false,
   "debug": false
 }
