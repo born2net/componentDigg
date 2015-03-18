@@ -1,0 +1,33 @@
+<html>
+<head>
+    <script>
+        window.debug = 0;
+    </script>
+    <script type="text/javascript" src="bridge/As3JsBridge.js"></script>
+    <script type="text/javascript" src="utils/xml2json.js"></script>
+    <script type="text/javascript" src="js/common/jq/jq1.9.1.js"></script>
+    <script type="text/javascript" src="js/common/underscore/underscore.js"></script>
+    <script type="text/javascript" src="js/common/backbone/backbone.js"></script>
+    <script type="text/javascript" src="utils/errCatch.js"></script>
+    <script type="text/javascript" src="js/studioApp.js"></script>
+    <link href="_css/fontawesome/css/font-awesome.css" rel="stylesheet">
+    <link href="page.css" rel="stylesheet">
+</head>
+
+<body style="margin-left:10px;">
+<h1 style="padding: 20px 20px 20px 0">Digg settings</h1>
+<label class="bolding">Background Color</label>
+<input id="bgColor" type="text" style="width:100px;"/>
+<hr/>
+<label class="bolding" style="float: left">Scroll Speed</label>
+<div class="radioButtons" style="float: left; position: relative; top: -3px; left: 30px">
+    <input type="radio" name="speed" class="bolding" value="10"><span>slow</span>
+    <br/>
+    <input type="radio" name="speed" value="50"><span>medium</span>
+    <br/>
+    <input type="radio" name="speed" value="100"><span>fast</span>
+    <br/>
+</div>
+<p/>
+</body>
+</html>

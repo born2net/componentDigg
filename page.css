@@ -1,0 +1,43 @@
+* {
+    font-size: 12px;
+}
+
+.bolding {
+    font-family: Arial;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+input {
+    font-family: Arial;
+    font-size: 11px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+
+button {
+    font-size: 11px;
+    font-weight: normal;
+}
+
+button .fa {
+    font-size: 13px;
+    color: #424242 !important;
+}
+
+hr {
+    border: none;
+    height: 1px;
+    background-color: #d1d1d1;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-right: 20px;
+}
+
+.radioButtons span {
+    padding: 0;
+    margin: 0;
+    position: relative;
+    top: -3px;
+}
+
