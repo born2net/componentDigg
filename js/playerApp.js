@@ -35,6 +35,7 @@ define(['Consts', 'bootstrap', 'backbone.controller', 'ComBroker', 'Lib', 'Eleme
             self._listenDispose();
             self._initViews();
             self._waitPlayerData();
+
         },
 
         /**
@@ -48,8 +49,8 @@ define(['Consts', 'bootstrap', 'backbone.controller', 'ComBroker', 'Lib', 'Eleme
                     var x2js = new X2JS();
                     var jData = x2js.xml_str2json(window.xmlData);
 
-                    self._setStyle(jData.Data)
-                    BB.SCROLL_SPEED = parseInt(jData.Data._speed)
+                    self._setStyle(jData.Data);
+                    BB.SCROLL_SPEED = parseInt(jData.Data._speed);
                     window.clearInterval(fd);
                     setTimeout(function () {
                         self.m_diggCollection.getData();
