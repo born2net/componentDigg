@@ -1,5 +1,5 @@
 /**
- Sample application for embedding node-web-kit inside the SignagePlayer
+ Digg application for embedding node-web-kit inside the SignagePlayer
  @app app.js
  @license MIT
  **/

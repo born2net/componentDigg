@@ -13,11 +13,11 @@ client.on('data', function(data)
     var a = String.fromCharCode.apply(null, new Uint16Array(data));
     console.log(a);
 
-    try {
+    //try {
         var json = JSON.parse(data);
-    } catch (e) {
-        console.log('err ' + e);
-    }
+    //} catch (e) {
+    //    console.log('err ' + e);
+    //}
 
     // show all events
     // alert(json.fnc);

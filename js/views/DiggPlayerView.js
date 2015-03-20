@@ -58,13 +58,20 @@ define(['jquery', 'backbone', 'text!templates/DiggArticle.html', 'TweenLite', 'S
                 // var url = 'https://secure.digitalsignage.com/GetDateTime'
                 var url = 'https://secure.digitalsignage.com/Digg';
 
-                //getObjectValue(0, 'getCachingData("' + url + '",' + 1 + ',' + 1 + ')', function (itemSrc) {
-                //    console.log(itemSrc);
-                //});
-
-                $.get(url, function (models, b, c, d) {
-                    self.collection.add(models);
+                getObjectValue(0, 'getCachingData("' + url + '",' + 10 + ',' + 10 + ')', function (models) {
+                    if (_.isUndefined(models))
+                        return;
+                    var jModels = JSON.parse(models);
+                    var diggData = JSON.parse(jModels);
                 });
+
+                /*
+                $.get(url, function (models) {
+                    self.collection.add(models);
+                    alert(models);
+                });
+                */
+
             }
         },
 
@@ -145,18 +152,8 @@ define(['jquery', 'backbone', 'text!templates/DiggArticle.html', 'TweenLite', 'S
                 TweenLite.to(window, 2, {scrollTo: {y: times}, ease: Power2.easeOut});
                 times = times + BB.SCROLL_SPEED;
             }, 500);
-        },
-
-        /**
-         An example of sending event to SignagePlayer every 7 seconds
-         @method _sampleSendEvent
-         **/
-        _exampleSendEvent: function(){
-            // example of firing a 'next' event that will be caught by a collection to flip items
-            setInterval(function () {
-                self._sendEvent('next');
-            }, 7000)
         }
+
     });
 
     return DiggPlayerView;

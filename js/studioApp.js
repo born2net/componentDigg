@@ -2,16 +2,18 @@ var x2js = new X2JS();
 var m_data = {};
 
 /**
- popular the UI with from local msdb onto UI
+ LOAD: popular the UI with from local msdb onto UI
  @method setData
  @param {XML} i_xmlData
-  **/
+ **/
+
 function setData(i_xmlData) {
+
     m_data = x2js.xml_str2json(i_xmlData);
 
     // set background color
     if (m_data.Data._bgColor != null) {
-        $('#bgColor').val(m_data.Data._bgColor);
+        $("#bgColor").val(m_data.Data._bgColor).change();
         var radios = $("input[type='radio']");
         var speed = radios.filter(":checked").val();
     }
@@ -24,7 +26,7 @@ function setData(i_xmlData) {
 }
 
 /**
- Get settings from UI and save to local msdb
+ SAVE: get settings from UI and save to local msdb
  @method getData
  @return {XML} json to xml data
  **/
@@ -43,7 +45,9 @@ function getData() {
     return x2js.json2xml_str(m_data);
 }
 
-// append new function on ready here
 $(document).ready(function () {
+    $('#bgColor').colorPicker();
 });
+
+
 
