@@ -54,7 +54,7 @@ define(['Consts', 'bootstrap', 'backbone.controller', 'ComBroker', 'Lib', 'Eleme
                     window.clearInterval(fd);
                     setTimeout(function () {
                         self.m_diggCollection.getData();
-                    }, 500)
+                    }, 1500)
                 }
             }, 1000);
         },
@@ -77,7 +77,7 @@ define(['Consts', 'bootstrap', 'backbone.controller', 'ComBroker', 'Lib', 'Eleme
             var self = this;
             BB.comBroker.listen(BB.EVENTS.ON_XMLDATA_ERROR, function (e) {
                 if (window.debug)
-                    alert('err parsing xdata: ' + e.edata);
+                    log('err parsing xdata: ' + e.edata);
             });
         },
 

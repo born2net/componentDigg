@@ -16,8 +16,8 @@ define(['jquery', 'backbone', 'text!templates/DiggArticle.html', 'TweenLite', 'S
         initialize: function () {
             var self = this;
             BB.comBroker.setService(BB.SERVICES.DIGG_VIEW, self);
-            self.m_cacheExpirationMs = 10000;
-            self.m_purgedIfNotUsedMs = 1000000;
+            self.m_cacheExpirationSec = 1;
+            self.m_purgedIfNotUsedSec = 1000000;
             self.m_skip = false;
             self.m_intervalScroll = undefined;
             self.m_intervalPosition = undefined;
@@ -54,24 +54,24 @@ define(['jquery', 'backbone', 'text!templates/DiggArticle.html', 'TweenLite', 'S
         bbSyncOverride: function () {
             var self = this;
             Backbone.sync = function (method, model, options, error) {
+                try {
+                    BB.comBroker.listen(BB.EVENTS.ON_CACHING_DATA, function (e) {
+                        log('Data in ' + e);
+                        var jModels = JSON.parse(e.edata.data);
+                        self.collection.add(jModels);
+                    });
+                    var url = 'https://secure.digitalsignage.com/Digg';
+                    getObjectValue(0, 'getCachingData("' + url + '",' + self.m_cacheExpirationSec + ',' + self.m_purgedIfNotUsedSec + ')', function (models) {
+                        log('requsted data');
+                    });
 
-                // var url = 'https://secure.digitalsignage.com/GetDateTime'
-                var url = 'https://secure.digitalsignage.com/Digg';
+                     //$.get(url, function (models) {
+                     //     self.collection.add(models);
+                     // });
 
-                getObjectValue(0, 'getCachingData("' + url + '",' + 10 + ',' + 10 + ')', function (models) {
-                    if (_.isUndefined(models))
-                        return;
-                    var jModels = JSON.parse(models);
-                    var diggData = JSON.parse(jModels);
-                });
-
-                /*
-                $.get(url, function (models) {
-                    self.collection.add(models);
-                    alert(models);
-                });
-                */
-
+                } catch (e){
+                    log('problem parsing data ' + e);
+                }
             }
         },
 
@@ -88,7 +88,7 @@ define(['jquery', 'backbone', 'text!templates/DiggArticle.html', 'TweenLite', 'S
                 var ele = (i > half) ? Elements.DIGGS_P1 : Elements.DIGGS_P2;
                 var url = model.get('link');
                 setTimeout(function () {
-                    getObjectValue(0, 'getCachingPath("' + url + '",' + self.m_cacheExpirationMs + ',' + self.m_purgedIfNotUsedMs + ')', function (itemSrc) {
+                    getObjectValue(0, 'getCachingPath("' + url + '",' + self.m_cacheExpirationSec + ',' + self.m_purgedIfNotUsedSec + ')', function (itemSrc) {
                         var imgSrc = JSON.parse(itemSrc);
                         var m = {
                             link: imgSrc,
