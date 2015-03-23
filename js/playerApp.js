@@ -48,9 +48,8 @@ define(['Consts', 'bootstrap', 'backbone.controller', 'ComBroker', 'Lib', 'Eleme
                 if (window.xmlData) {
                     var x2js = new X2JS();
                     var jData = x2js.xml_str2json(window.xmlData);
-
                     self._setStyle(jData.Data);
-                    BB.SCROLL_SPEED = parseInt(jData.Data._speed);
+                    BB.SCROLL_SPEED = parseInt(jData.Data._speed) ? parseInt(jData.Data._speed) : 10;
                     window.clearInterval(fd);
                     setTimeout(function () {
                         self.m_diggCollection.getData();
