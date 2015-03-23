@@ -75,7 +75,7 @@ define(['Consts', 'bootstrap', 'backbone.controller', 'ComBroker', 'Lib', 'Eleme
         _listenPlayerError: function () {
             var self = this;
             BB.comBroker.listen(BB.EVENTS.ON_XMLDATA_ERROR, function (e) {
-                if (window.debug)
+                if (debug)
                     log('err parsing xdata: ' + e.edata);
             });
         },

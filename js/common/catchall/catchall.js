@@ -1,5 +1,5 @@
 window.onerror = function (msg, url, line, col, error) {
-    if (window.debug == undefined || window.debug){
+    if (debug){
         var extra = !col ? '' : '\ncolumn: ' + col;
         extra += !error ? '' : '\nerror: ' + error;
         alert("err 1: " + msg + "\nurl: " + url + "\nline: " + line + extra);
@@ -9,6 +9,6 @@ window.onerror = function (msg, url, line, col, error) {
 };
 
 window.log = function (msg) {
-    if (window.debug)
+    if (debug)
         alert(new Date().toTimeString().replace(/.*(\d{2}:\d{2}:\d{2}).*/, "$1") + ': ' + msg);
 };

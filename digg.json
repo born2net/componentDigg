@@ -1,6 +1,6 @@
 {
   "name": "digg",
-  "version": "1.0.483",
+  "version": "1.0.485",
   "url": "http://signage.me/components/digg/digg.zip",
   "property": "page.html",
   "desktopUseNode": false,
