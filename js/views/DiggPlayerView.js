@@ -29,6 +29,8 @@ define(['jquery', 'backbone', 'text!templates/DiggArticle.html', 'TweenLite', 'S
                 self._loadPosts();
             });
             self._listenDispose();
+
+            document.body.style.cursor = 'none';
         },
 
         /**

@@ -1,5 +1,10 @@
 * {
     font-size: 12px;
+    cursor: none !important;
+}
+
+div img a {
+    cursor: none !important;
 }
 
 .bolding {

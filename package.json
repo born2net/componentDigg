@@ -3,6 +3,7 @@
   "name": "digg",
   "single-instance": false,
   "window": {
+    "kiosk": false,
     "toolbar": true,
     "frame": true,
     "x": 400,
