@@ -67,11 +67,11 @@ define(['jquery', 'backbone', 'text!templates/DiggArticle.html', 'TweenLite', 'S
                         log('requsted data');
                     });
 
-                     //$.get(url, function (models) {
-                     //     self.collection.add(models);
-                     // });
+                    //$.get(url, function (models) {
+                    //     self.collection.add(models);
+                    // });
 
-                } catch (e){
+                } catch (e) {
                     log('problem parsing data ' + e);
                 }
             }
@@ -88,17 +88,21 @@ define(['jquery', 'backbone', 'text!templates/DiggArticle.html', 'TweenLite', 'S
             self.collection.forEach(function (model) {
                 i++;
                 var ele = (i > half) ? Elements.DIGGS_P1 : Elements.DIGGS_P2;
-                var url = model.get('link');
-                setTimeout(function () {
-                    getObjectValue(0, 'getCachingPath("' + url + '",' + self.m_cacheExpirationSec + ',' + self.m_purgedIfNotUsedSec + ')', function (itemSrc) {
+                var p = {
+                    u: model.get('link'),
+                    t: model.get('title')
+                };
+                setTimeout(function (p) {
+                    getObjectValue(0, 'getCachingPath("' + p.u + '",' + self.m_cacheExpirationSec + ',' + self.m_purgedIfNotUsedSec + ')', function (itemSrc) {
                         var imgSrc = JSON.parse(itemSrc);
                         var m = {
                             link: imgSrc,
-                            title: model.get('title')
+                            title: p.t
                         };
                         $(ele).append($(self.m_diggTemplate(m)).hide().fadeIn());
                     });
-                }, 250 * i);
+                }, 1250 * i, p);
+
             });
             self._scroll();
         },

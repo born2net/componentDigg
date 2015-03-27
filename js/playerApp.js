@@ -100,7 +100,7 @@ define(['Consts', 'bootstrap', 'backbone.controller', 'ComBroker', 'Lib', 'Eleme
         _listenPlayerDataEvent: function () {
             var self = this;
             BB.comBroker.listen(BB.EVENTS.ON_PLAYER_EVENT, function (e) {
-                // alert('data: ' + e.edata.name + ' ' + e.edata.param);
+                // log('data: ' + e.edata.name + ' ' + e.edata.param);
             });
         },
 
