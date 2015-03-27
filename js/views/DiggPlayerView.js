@@ -4,7 +4,7 @@
  @constructor
  @return {object} instantiated DiggPlayerView
  **/
-define(['jquery', 'backbone', 'text!templates/DiggArticle.html', 'TweenLite', 'ScrollToPlugin'], function ($, Backbone, DiggArticle, TweenLite, ScrollToPlugin) {
+define(['jquery', 'backbone', 'text!templates/DiggArticle.html', 'TweenLite', 'ScrollToPlugin', 'platform'], function ($, Backbone, DiggArticle, TweenLite, ScrollToPlugin, platform) {
 
 
     var DiggPlayerView = Backbone.View.extend({
@@ -16,6 +16,16 @@ define(['jquery', 'backbone', 'text!templates/DiggArticle.html', 'TweenLite', 'S
         initialize: function () {
             var self = this;
             BB.comBroker.setService(BB.SERVICES.DIGG_VIEW, self);
+            BB.platform = platform;
+
+            /*
+             alert('os'+BB.platform.os);
+             alert('name'+BB.platform.name);
+             alert('layout'+BB.platform.layout);
+             alert('product'+BB.platform.product);
+             alert('manufacturer'+BB.platform.manufacturer);
+             */
+
             self.m_cacheExpirationSec = 1;
             self.m_purgedIfNotUsedSec = 1000000;
             self.m_skip = false;
@@ -85,6 +95,16 @@ define(['jquery', 'backbone', 'text!templates/DiggArticle.html', 'TweenLite', 'S
             var self = this;
             var half = Math.round(self.collection.length / 2);
             var i = 0;
+            var delay = 250;
+            var rePattern = new RegExp(/android/ig);
+            var runningOS = String(BB.platform.os);
+            if (runningOS == 'null') {
+            } else if (runningOS == undefined) {
+            } else if (runningOS.match(rePattern)) {
+                delay = 1250;
+            }
+
+
             self.collection.forEach(function (model) {
                 i++;
                 var ele = (i > half) ? Elements.DIGGS_P1 : Elements.DIGGS_P2;
@@ -101,7 +121,7 @@ define(['jquery', 'backbone', 'text!templates/DiggArticle.html', 'TweenLite', 'S
                         };
                         $(ele).append($(self.m_diggTemplate(m)).hide().fadeIn());
                     });
-                }, 1250 * i, p);
+                }, delay * i, p);
 
             });
             self._scroll();
