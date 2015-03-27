@@ -95,7 +95,7 @@ define(['jquery', 'backbone', 'text!templates/DiggArticle.html', 'TweenLite', 'S
             var self = this;
             var half = Math.round(self.collection.length / 2);
             var i = 0;
-            var delay = 250;
+            var delay = 200;
             var rePattern = new RegExp(/android/ig);
             var runningOS = String(BB.platform.os);
             if (runningOS == 'null') {
