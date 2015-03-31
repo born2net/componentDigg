@@ -26,7 +26,7 @@ define(['jquery', 'backbone', 'text!templates/DiggArticle.html', 'TweenLite', 'S
              alert('manufacturer'+BB.platform.manufacturer);
              */
 
-            self.m_cacheExpirationSec = 1;
+            self.m_cacheExpirationSec = 1000;
             self.m_purgedIfNotUsedSec = 1000000;
             self.m_skip = false;
             self.m_intervalScroll = undefined;
@@ -112,8 +112,10 @@ define(['jquery', 'backbone', 'text!templates/DiggArticle.html', 'TweenLite', 'S
                     u: model.get('link'),
                     t: model.get('title')
                 };
+
                 setTimeout(function (p) {
                     getObjectValue(0, 'getCachingPath("' + p.u + '",' + self.m_cacheExpirationSec + ',' + self.m_purgedIfNotUsedSec + ')', function (itemSrc) {
+                        // alert(itemSrc);
                         var imgSrc = JSON.parse(itemSrc);
                         var m = {
                             link: imgSrc,
