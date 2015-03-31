@@ -92,7 +92,6 @@ define(['jquery', 'backbone', 'text!templates/DiggArticle.html', 'TweenLite', 'S
          @method _loadPosts
          **/
         _loadPosts: function () {
-            alert('456');
             var self = this;
             var half = Math.round(self.collection.length / 2);
             var i = 0;
