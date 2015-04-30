@@ -25,6 +25,7 @@ define(['jquery', 'backbone', 'DiggModel'], function ($, Backbone, DiggModel) {
             self.fetch({
                 data: {},
                 success: function (models) {
+                    log(models);
                 },
                 error: function () {
                     log('error fetch collection');

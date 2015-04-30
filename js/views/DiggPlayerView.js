@@ -26,8 +26,8 @@ define(['jquery', 'backbone', 'text!templates/DiggArticle.html', 'TweenLite', 'S
              alert('manufacturer'+BB.platform.manufacturer);
              */
 
-            self.m_cacheExpirationSec = 1000;
-            self.m_purgedIfNotUsedSec = 1000000;
+            self.m_cacheExpirationSec = 1;
+            self.m_purgedIfNotUsedSec = 1;
             self.m_skip = false;
             self.m_intervalScroll = undefined;
             self.m_intervalPosition = undefined;
