@@ -12,7 +12,7 @@ var server;
  **/
 var configFile = 'digg.json';
 var appName = 'digg';
-var zipName = 'digg.zip';
+var zipName = 'digg2.zip';
 var localDir = '/cygdrive/c/msweb/componentDigg/';
 var remoteDir = '/var/www/sites/signage.me/htdocs/components/digg';
 var studioDir = 'SignageStudio.86EE3EEE54D7DB049D16E358CDC443F088917621.1';
